@@ -1,7 +1,7 @@
-EnvPaths
+EnvPaths [![Build Status](https://travis-ci.org/NickTomlin/env_paths.png?branch=master)](https://travis-ci.org/NickTomlin/env_paths.fury.io/rb/env_paths.svg)](https://badge.fury.io/rb/env_paths)
 ===
 
-Provides OS specific paths for your gem/application.
+Provides OS specific paths for your gem/application. A ruby port of [`env-paths`](https://github.com/sindresorhus/env-paths).
 
 ## Installation
 

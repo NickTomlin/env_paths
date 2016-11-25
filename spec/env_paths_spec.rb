@@ -12,7 +12,7 @@ describe EnvPaths do
   end
 
   context 'MacOs' do
-    it 'returs osx specific data' do
+    it 'returs OSX specific data' do
       allow(EnvPaths).to receive(:_platform).and_return('x86_64-darwin13.0')
       env_paths = EnvPaths.get('my_app')
 
@@ -20,7 +20,7 @@ describe EnvPaths do
       expect(env_paths.config).to match(%r{Library/Preferences/my_app-ruby})
       expect(env_paths.cache).to match(%r{Library/Caches/my_app-ruby})
       expect(env_paths.log).to match(%r{Library/Logs/my_app-ruby})
-      expect(env_paths.temp).to match(%r{/var/folders/.*/my_app-ruby})
+      expect(env_paths.temp).to include('my_app-ruby')
     end
   end
 

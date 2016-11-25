@@ -25,10 +25,30 @@ describe EnvPaths do
   end
 
   context 'Linux' do
-    it 'returs linux specific data'
+    it 'returs linux specific data' do
+      allow(EnvPaths).to receive(:_platform).and_return('hipster-linux')
+      env_paths = EnvPaths.get('my_app')
+
+      expect(env_paths.data).to match(%r{/Users/.*/.local/share/my_app-ruby})
+      expect(env_paths.config).to match(%r{/Users/.*/.config/my_app-ruby})
+      expect(env_paths.cache).to match(%r{/Users/.*/.cache/my_app-ruby})
+      expect(env_paths.log).to match(%r{/Users/.*/.local/state/my_app-ruby})
+      expect(env_paths.temp).to match(%r{/folders/.*/my_app-ruby})
+    end
+
+    it 'prefers XDG_* ENV settings to defaults'
   end
 
   context 'Windows' do
-    it 'returs windows specific data'
+    it 'returs windows specific data' do
+      allow(EnvPaths).to receive(:_platform).and_return('win32')
+      env_paths = EnvPaths.get('my_app')
+
+      expect(env_paths.data).to include('Data')
+      expect(env_paths.config).to include('Config')
+      expect(env_paths.cache).to include('Cache')
+      expect(env_paths.log).to include('Log')
+      expect(env_paths.temp).not_to be_nil
+    end
   end
 end

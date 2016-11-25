@@ -11,10 +11,10 @@ module EnvPaths
       OSData.new(
         ENV.fetch('XDG_DATA_HOME', File.join(HOMEDIR, '.local', 'share', app_name)),
         ENV.fetch('XDG_CONFIG_HOME', File.join(HOMEDIR, '.config', app_name)),
-        ENV.FETCH('XDG_CACHE_HOME', File.join(HOMEDIR, '.cache', app_name)),
+        ENV.fetch('XDG_CACHE_HOME', File.join(HOMEDIR, '.cache', app_name)),
         # https://wiki.debian.org/XDGBaseDirectorySpecification#state
-        ENV.FETCH('XDG_STATE_HOME', File.join(HOMEDIR, '.local', 'state', app_name)),
-        File.join(Dir.tmpdir, ENV['user'], app_name)
+        ENV.fetch('XDG_STATE_HOME', File.join(HOMEDIR, '.local', 'state', app_name)),
+        File.join(Dir.tmpdir, Etc.getlogin, app_name)
       )
     end
   end

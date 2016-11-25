@@ -16,10 +16,10 @@ describe EnvPaths do
       allow(EnvPaths).to receive(:_platform).and_return('x86_64-darwin13.0')
       env_paths = EnvPaths.get('my_app')
 
-      expect(env_paths.data).to match(%r{/Users/.*/Library/Application Support/my_app-ruby})
-      expect(env_paths.config).to match(%r{/Users/.*/Library/Preferences/my_app-ruby})
-      expect(env_paths.cache).to match(%r{/Users/.*/Library/Caches/my_app-ruby})
-      expect(env_paths.log).to match(%r{/Users/.*/Library/Logs/my_app-ruby})
+      expect(env_paths.data).to match(%r{Library/Application Support/my_app-ruby})
+      expect(env_paths.config).to match(%r{Library/Preferences/my_app-ruby})
+      expect(env_paths.cache).to match(%r{Library/Caches/my_app-ruby})
+      expect(env_paths.log).to match(%r{Library/Logs/my_app-ruby})
       expect(env_paths.temp).to match(%r{/var/folders/.*/my_app-ruby})
     end
   end
@@ -29,11 +29,11 @@ describe EnvPaths do
       allow(EnvPaths).to receive(:_platform).and_return('hipster-linux')
       env_paths = EnvPaths.get('my_app')
 
-      expect(env_paths.data).to match(%r{/Users/.*/.local/share/my_app-ruby})
-      expect(env_paths.config).to match(%r{/Users/.*/.config/my_app-ruby})
-      expect(env_paths.cache).to match(%r{/Users/.*/.cache/my_app-ruby})
-      expect(env_paths.log).to match(%r{/Users/.*/.local/state/my_app-ruby})
-      expect(env_paths.temp).to match(%r{/folders/.*/my_app-ruby})
+      expect(env_paths.data).to match(%r{.local/share/my_app-ruby$})
+      expect(env_paths.config).to match(%r{.config/my_app-ruby$})
+      expect(env_paths.cache).to match(%r{.cache/my_app-ruby$})
+      expect(env_paths.log).to match(%r{.local/state/my_app-ruby$})
+      expect(env_paths.temp).to include('my_app-ruby')
     end
 
     it 'prefers XDG_* ENV settings to defaults'

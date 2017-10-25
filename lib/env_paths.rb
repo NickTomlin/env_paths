@@ -7,7 +7,6 @@ module EnvPaths
   HOMEDIR = Dir.home
 
   module Linux
-    # rubocop:disable Metrics/AbcSize
     def self.config(app_name)
       OSData.new(
         File.join(ENV.fetch('XDG_DATA_HOME', File.join(HOMEDIR, '.local', 'share')), app_name),

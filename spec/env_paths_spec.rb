@@ -25,7 +25,7 @@ describe EnvPaths do
   end
 
   context 'Linux' do
-    xdg_vars = %w(XDG_DATA_HOME XDG_CONFIG_HOME XDG_CACHE_HOME XDG_STATE_HOME)
+    xdg_vars = %w[XDG_DATA_HOME XDG_CONFIG_HOME XDG_CACHE_HOME XDG_STATE_HOME]
     platform = 'x86_64-linux'
 
     it 'returns Linux-specific data' do

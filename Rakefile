@@ -9,4 +9,4 @@ Gem::PackageTask.new(spec)
 RuboCop::RakeTask.new
 RSpec::Core::RakeTask.new(:spec)
 
-task default: %w(rubocop spec)
+task default: %w[rubocop spec]

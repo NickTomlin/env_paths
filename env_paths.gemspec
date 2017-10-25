@@ -1,4 +1,3 @@
-# coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'env_paths/version'
@@ -8,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.version       = EnvPaths::VERSION
   spec.authors       = ['Nick Tomlin']
   spec.email         = ['nick.tomlin@gmail.com']
-  spec.summary       = 'Environment specific paths. A port of npm\'s env-paths'
+  spec.summary       = 'Environment specific paths. A port of node\'s env-paths'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")

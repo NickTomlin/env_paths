@@ -7,13 +7,14 @@ module EnvPaths
   HOMEDIR = Dir.home
 
   module Linux
+    # rubocop:disable Metrics/AbcSize
     def self.config(app_name)
       OSData.new(
-        ENV.fetch('XDG_DATA_HOME', File.join(HOMEDIR, '.local', 'share', app_name)),
-        ENV.fetch('XDG_CONFIG_HOME', File.join(HOMEDIR, '.config', app_name)),
-        ENV.fetch('XDG_CACHE_HOME', File.join(HOMEDIR, '.cache', app_name)),
+        File.join(ENV.fetch('XDG_DATA_HOME', File.join(HOMEDIR, '.local', 'share')), app_name),
+        File.join(ENV.fetch('XDG_CONFIG_HOME', File.join(HOMEDIR, '.config')), app_name),
+        File.join(ENV.fetch('XDG_CACHE_HOME', File.join(HOMEDIR, '.cache')), app_name),
         # https://wiki.debian.org/XDGBaseDirectorySpecification#state
-        ENV.fetch('XDG_STATE_HOME', File.join(HOMEDIR, '.local', 'state', app_name)),
+        File.join(ENV.fetch('XDG_STATE_HOME', File.join(HOMEDIR, '.local', 'state')), app_name),
         File.join(Dir.tmpdir, Etc.getlogin, app_name)
       )
     end
